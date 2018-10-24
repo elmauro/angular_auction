@@ -1,0 +1,33 @@
+<div #myModal class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" *ngIf="selectedItem">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Auction for {{ selectedItem.name }}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <label class="control-label col-md-4" for="name">Quantity:</label>
+                    <div class="col-md-2">
+                        <input type="number" [(ngModel)]="qtyAuction">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="control-label col-md-4" for="name">Minimun bid value:</label>
+                    <div class="col-md-2">
+                        <input type="number" [(ngModel)]="minBidAuction">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info btn-lg" (click)="startAuction()" data-dismiss="modal">Start Auction</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+            <div class="alert alert-danger" *ngIf="errorMessage">
+                <strong>Error!</strong> {{ errorMessage }}
+            </div>
+        </div>
+    </div>
+</div>

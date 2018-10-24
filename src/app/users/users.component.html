@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Player Stats</h3>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <label class="col-md-3" for="name">Username:</label>
+                        <div class="col-md-3">
+                            <label>{{ user.username }}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="control-label col-md-3" for="name">Coins:</label>
+                        <div class="col-md-3">
+                            <label>{{ user.coins }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="leave()">Leave</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h3>Inventory</h3>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="scrollable-content">
+                            <div *ngFor="let item of inventory" class="list-group" (click)="onSelect(item)">
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-3">
+                                        <img src="{{item.image}}" height="50px" width="50px" alt="">
+                                        <div>
+                                            {{ item.name }}  
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>Quantity</h5>
+                                        {{ item.quantity }}
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="image" src="/assets/images/auction.jpg" height="50px" width="50px" ng-click="open($index)" data-toggle="modal" data-target="#myModal"/>
+                                        <div>
+                                            Auction  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+  </div>
+</div>
+<div class="col-md-4">
+    <app-auction (outputEvent)= "onComponentChange($event)" [selectedItem]="selectedItem"></app-auction>
+</div>
