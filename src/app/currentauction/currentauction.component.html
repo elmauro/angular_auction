@@ -6,7 +6,7 @@
         </div>
         <div class="panel-body" [hidden]="!showCurrent" *ngIf="currentAuction">
             <div class="row">
-                <h4>Seller: {{ currentAuction.seller }}</h4>
+                <h4>Seller: {{ currentAuction.seller.username }}</h4>
             </div>
             <div class="row">
                 <div class="col-md-1"></div>
@@ -35,7 +35,7 @@
             </div>
             <div class="row">
                 <img src="/assets/images/bid.jpg" height="50px" width="50px">
-                <button type="button" class="btn btn-info btn-lg" ng-click="placeBid()">Place bid</button>
+                <button type="button" class="btn btn-info btn-lg" (click)="placeBid()">Place bid</button>
             </div>
             <div class="alert alert-danger" *ngIf="bidErrorMessage">
                 <strong>Error!</strong> {{ bidErrorMessage }}

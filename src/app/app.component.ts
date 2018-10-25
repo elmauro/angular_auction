@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Item, SelectedItem, CurrentAuction } from './user';
+import { Item, SelectedItem, CurrentAuction, User } from './user';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +10,16 @@ export class AppComponent {
   showMinimum: boolean;
   showCurrent: boolean;
   selectedItem: Item;
-  currentAuction: CurrentAuction;
+  currentUser: User;
 
   title = 'Auction System';
 
   ngOnInit() {
   }
 
-  onComponentChange(currentAuction: CurrentAuction){
-    this.currentAuction = currentAuction;
-    this.showMinimum = true;
-    this.showCurrent = true;
+  onComponentChange(currentUser: User){
+    this.currentUser = currentUser;
+    this.showMinimum = false;
+    this.showCurrent = false;
   }
 }

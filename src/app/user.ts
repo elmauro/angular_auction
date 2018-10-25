@@ -1,4 +1,5 @@
 export class User {
+    id: string;
     username: string;
     coins: number;
     breads: number;
@@ -13,13 +14,18 @@ export class Item {
 }
 
 export class CurrentAuction {
-    seller: string;
+    seller: User;
     image: string;
     name: string;
     quantity: number;
     time: number;
     winBid: number;
     minBid: number;
+}
+
+export class Winner{
+    winner: User;
+    bid: number;
 }
 
 export class SelectedItem {

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Item, CurrentAuction } from '../user';
+import { Item, User, CurrentAuction } from '../user';
+import { AuctionService } from '../auction.service';
 
 @Component({
   selector: 'app-auction',
@@ -9,12 +10,15 @@ import { Item, CurrentAuction } from '../user';
 export class AuctionComponent implements OnInit {
 
   @Input() selectedItem: Item;
+  @Input() user: User;
+
   errorMessage: any;
-  @Output() outputEvent:EventEmitter<CurrentAuction>=new EventEmitter();
   qtyAuction: number = 0;
   minBidAuction: number = 0;
 
-  constructor() { }
+  constructor(
+    private auctionService: AuctionService,
+  ) { }
 
   ngOnInit() {
     this.errorMessage = undefined;
@@ -26,10 +30,12 @@ export class AuctionComponent implements OnInit {
     currentAuction.quantity = this.qtyAuction;
     currentAuction.image = this.selectedItem.image;
     currentAuction.minBid = this.minBidAuction;
-    currentAuction.seller = "elmauro";
-    currentAuction.time = 90;
+    currentAuction.seller = this.user;
+    currentAuction.time = 60;
     currentAuction.winBid = 100;
 
-    this.outputEvent.emit(currentAuction);
+    this.qtyAuction = 0;
+    this.minBidAuction = 0;
+    this.auctionService.startAuction(currentAuction);
   }
 }
