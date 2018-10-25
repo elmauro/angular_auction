@@ -85,4 +85,8 @@ export class CurrentauctionService {
     })     
     return observable;
   }
+
+  getCurrentAuction(){
+    this.socket.emit('getCurrentAuction');
+  }
 }

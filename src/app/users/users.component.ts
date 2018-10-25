@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User, Item, SelectedItem, CurrentAuction } from '../user';
 import { UserService } from '../user.service';
+import { CurrentauctionService } from '../currentauction.service';
 
 @Component({
   selector: 'app-users',
@@ -16,6 +17,7 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private currentAuctionService: CurrentauctionService
   ) { }
 
   initialize(){
@@ -50,6 +52,7 @@ export class UsersComponent implements OnInit {
           { name: 'diamond', quantity: this.user.diamond, image: 'assets/images/diamond.jpg' }
         ];
         this.outputEvent.emit(this.user);
+        this.currentAuctionService.getCurrentAuction();
       });
   }
 
