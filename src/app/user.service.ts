@@ -9,6 +9,7 @@ import { User } from './user';
 export class UserService {
 
   private url = 'http://localhost:8090';
+  private usersPath = '/api/users/';
   private userPath = '/api/users/username/';
   private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -22,14 +23,14 @@ export class UserService {
 
   saveUser(user: User): Promise<User> {
     return this.http
-        .post('/api/users', JSON.stringify(User), {headers: this.headers})
+        .post(this.url + this.usersPath, JSON.stringify(user), {headers: this.headers})
         .toPromise()
         .then(() => user);
   }
 
   updateUser(user: User): Promise<User> {
     return this.http
-      	.put('/api/users/' + user.id, JSON.stringify(user), {headers: this.headers})
+      	.put(this.url + this.usersPath + user.id, JSON.stringify(user), {headers: this.headers})
       	.toPromise()
       	.then(() => user);
   }

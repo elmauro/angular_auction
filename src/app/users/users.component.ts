@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User, Item, SelectedItem, CurrentAuction } from '../user';
 import { UserService } from '../user.service';
 import { CurrentauctionService } from '../currentauction.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-users',
@@ -17,7 +18,8 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private currentAuctionService: CurrentauctionService
+    private currentAuctionService: CurrentauctionService,
+    private router: Router
   ) { }
 
   initialize(){
@@ -68,5 +70,9 @@ export class UsersComponent implements OnInit {
       .then(user => {
         this.getUser(user.username);
       });
+  }
+
+  leave(){
+    this.router.navigate(['/login']);
   }
 }

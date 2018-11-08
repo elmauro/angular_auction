@@ -1,0 +1,22 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Login</h2>
+    <form name="form" (ngSubmit)="login()" role="form">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control" [(ngModel)]="username" required />
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+</div>
+
+<!--<div class="aligner">
+  <form id="login-form" #lForm="ngForm" [formGroup]="loginForm" (ngSubmit)="submitLogin()" novalidate>
+    <md-input-container style="width: 100%; margin-bottom: 10px;" [ngClass]="{'mat-input-invalid': submitted && error?.code == 1}">
+      <input mdInput type="text" formControlName="username" placeholder="Username"/>
+      <md-hint style="color: red;" *ngIf="submitted && error?.code == 1 && !loginForm.controls.username.hasError('required')">{{error.message}}</md-hint>
+      <md-hint style="color: red;" *ngIf="submitted && loginForm.controls.username.hasError('required')">Field is mandatory</md-hint>
+    </md-input-container>
+  </form>
+</div>-->

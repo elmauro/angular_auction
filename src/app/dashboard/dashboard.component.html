@@ -1,0 +1,15 @@
+<div class="jumbotron text-center" style="text-align:center">
+  <p>This page allow working with Auctions</p>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-12">
+            <app-users (outputEvent)= "onComponentChange($event)"></app-users>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <app-currentauction [showCurrent]="showCurrent" [showMinimum]="showMinimum" [currentUser]="currentUser"></app-currentauction>
+    </div>
+  </div>
+</div>
